@@ -8,4 +8,6 @@ Version 0.1 contains all components for web app YardSale.
 
 Version 0.2 contains the web app YardSale with all components created in previous version.
 
+Version 0.3 contains the web app whit funcionality add to cart from button card or product info section (aside section). Also, you canremove items added to cart.
+
 ### Never stop learning 💚
