@@ -39,7 +39,6 @@ function closeMenus() {
   desktopMenu.classList.add('inactive');
   mobileMenu.classList.add('slide-right');
 }
-
 function toggleDesktopMenu() {
   desktopMenu.classList.toggle('inactive');
   shoppingCartContainer.classList.add('inactive');
@@ -108,34 +107,39 @@ productList.push({
   image: "https://moviltronics.com/wp-content/uploads/2018/07/Kit-Arduino-Starter-600x600.jpg",
 }); 
 productList.push({
-  name: "Kit Arduino Starter",
-  price: 264600,
-  image: "https://moviltronics.com/wp-content/uploads/2018/07/Kit-Arduino-Starter-600x600.jpg",
+  name: "Cargador B3 Li-poly 2-3s (Bateria)",
+  price: 35000,
+  image: "https://moviltronics.com/wp-content/uploads/2015/12/723-thickbox_default-Cargador-B3-Li-poly-2-3s-600x600.jpg",
 }); 
 productList.push({
-  name: "Kit Arduino Starter",
-  price: 264600,
-  image: "https://moviltronics.com/wp-content/uploads/2018/07/Kit-Arduino-Starter-600x600.jpg",
+  name: "Reproductor Mp3 Bluetooth Rectangular",
+  price: 30000,
+  image: "https://moviltronics.com/wp-content/uploads/2022/08/Modulo_0007_Mp3-600x600.jpg",
 }); 
 productList.push({
-  name: "Kit Arduino Starter",
-  price: 264600,
-  image: "https://moviltronics.com/wp-content/uploads/2018/07/Kit-Arduino-Starter-600x600.jpg",
+  name: "Kit solar Robot didáctico",
+  price: 35600,
+  image: "https://moviltronics.com/wp-content/uploads/2022/09/Kit-6-en-1_0018_Capa-0-600x600.jpg",
 }); 
 productList.push({
-  name: "Kit Arduino Starter",
-  price: 264600,
-  image: "https://moviltronics.com/wp-content/uploads/2018/07/Kit-Arduino-Starter-600x600.jpg",
+  name: "Batería gel 12V 28AH Plomo MT12-28",
+  price: 190000,
+  image: "https://moviltronics.com/wp-content/uploads/2021/10/Bateria-MT12-28_0001_Bateria-MT12-28-1-600x600.jpg",
 }); 
 productList.push({
-  name: "Kit Arduino Starter",
-  price: 264600,
-  image: "https://moviltronics.com/wp-content/uploads/2018/07/Kit-Arduino-Starter-600x600.jpg",
+  name: "Modulo Amplificador PAM8610 20 Watts con Control Volumen",
+  price: 17200,
+  image: "https://moviltronics.com/wp-content/uploads/2019/10/99-1-600x587.jpg",
 }); 
 productList.push({
-  name: "Kit Arduino Starter",
-  price: 264600,
-  image: "https://moviltronics.com/wp-content/uploads/2018/07/Kit-Arduino-Starter-600x600.jpg",
+  name: "Mini Protoboard Adhesiva De 400 Puntos – 8.5cm X 5.5cm",
+  price: 7500,
+  image: "https://moviltronics.com/wp-content/uploads/2019/08/Mini-Protoboard-Adhesiva-De-400-Puntos-8.5cm-X-_0000_Capa-5-600x600.jpg",
+});
+productList.push({
+  name: "Kit Robot Solar 13 en 1",
+  price: 99000,
+  image: "https://moviltronics.com/wp-content/uploads/2019/07/Kit-Solar-13-1_0000_Capa-52-600x600.jpg",
 });
 
 /* Dibujar los elementos en HTML en la pagina principal */
@@ -162,6 +166,8 @@ function renderProducts(arr) {
     productInfoDiv.append(productPrice, productName);
   
     const productInfoFigure = document.createElement('figure');
+    productInfoFigure.classList.add('add-to-cart-card-button');
+    productInfoFigure.addEventListener('click', addProductToCartListFromCard);
     const productImgCart = document.createElement('img');
     productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
   
@@ -177,7 +183,7 @@ function renderProducts(arr) {
 
 renderProducts(productList);
 
-/* Agregar productos al carrito de compras */
+/* Agregar productos al carrito de compras desde el aside*/
 function addProductToCartList(event) {
   let price;
   try {
@@ -200,6 +206,24 @@ function addProductToCartList(event) {
     });
   }
   
+  tempValueTotal += price;
+  idItemCart += 1;
+  renderCartList(shoppingCartList);
+  closeProductDetailAside();
+}
+
+/* Agregar productos al carrito de compras desde el boton de las cards*/
+function addProductToCartListFromCard(event) {
+  // console.log(event);
+  let price;
+  price = event.target.parentElement.parentElement.childNodes[0].childNodes[0].innerText;
+  price = parseFloat(price.slice(1));
+  shoppingCartList.push({
+    id: "item-value" + idItemCart,
+    name: event.target.parentElement.parentElement.childNodes[0].childNodes[1].innerText,
+    price: price,
+    image: event.target.parentElement.parentElement.parentElement.childNodes[0].src,
+  });
   tempValueTotal += price;
   idItemCart += 1;
   renderCartList(shoppingCartList);

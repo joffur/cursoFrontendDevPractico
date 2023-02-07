@@ -284,6 +284,7 @@ aside {
 .main-container {
   margin-top: 61px;
   margin-bottom: 24px;
+  padding-top: 5px;
 }
 .cards-container {
   margin-top: 20px;
@@ -294,6 +295,11 @@ aside {
 }
 .product-card {
   width: 240px;
+  border: 1px solid var(--very-light-pink);
+  padding: 5px;
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .product-card .product-img {
   width: 240px;
@@ -309,6 +315,7 @@ aside {
 }
 .product-card .product-info figure {
   margin: 0;
+  cursor: pointer;
 }
 .product-card .product-info figure img {
   width: 35px;
